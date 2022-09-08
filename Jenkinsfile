@@ -1,7 +1,7 @@
 pipeline {
-  agent any
-  environment {
-    DOCKERHUB_CREDENTIALS = credentials('divassnyk-dockerhub')
+  agent { label 'linux' }
+  options {
+    buildDiscarder(logRotator(numToKeepStr: '5'))
   }
   stages {
     stage('Build') {
